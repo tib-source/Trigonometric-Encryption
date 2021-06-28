@@ -147,7 +147,7 @@ The period (_100 units_) defines the entire length of one period of the tan wave
 
 
 <p align="center">
-    <img src="Images/40%_of_graph.png"> 
+    <img src="Images/40%25_of_graph.png"> 
 </p>
 
 Figure 3, graph with one cut end
@@ -157,7 +157,7 @@ As we can observe, _40%_ of its length was taken away from the right but since o
 This would look like this: 
 
 <p align="center">
-    <img src="Images/translated_40%_graph.png"> 
+    <img src="Images/translated_40%25_graph.png"> 
 </p>
 
 Figure 4, middle of a tan graph
