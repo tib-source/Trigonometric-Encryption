@@ -103,7 +103,7 @@ Since we want to distribute_ 27_ values evenly across the _y-_axis, we can just 
 In an instance where_ s = 1_, we would get the following values: 
 
 
-    **<span style="text-decoration:underline;">Data table 2</span>**
+**<span style="text-decoration:underline;">Data table 2</span>**
 
 <p align="center">
     <img src="Images/data_table_2.png"> 
