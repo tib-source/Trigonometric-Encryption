@@ -77,13 +77,12 @@ The process of encryption that I am exploring in this paper is quite simple. Ini
 
 
 ## <span style="text-decoration:underline;">Process</span>
+![Process](Images/Process.png)
+
 
 As the program initialises, the user is prompted to provide several values for the transformation formula of the tan graph. This follows the formula:
 
-![Process][images/Process.png]
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
+![transformation_formula](Images/transformation_formula.png)
 
 
  Where:
@@ -92,7 +91,7 @@ As the program initialises, the user is prompted to provide several values for t
     	a = Vertical stretch; (determined by the user)
 
 
-    	b = cycles per wavelength; (determined by the user)
+    	b = cycles per period; (determined by the user)
 
 
     	c = Horizontal translation; (calculated)
@@ -112,41 +111,32 @@ Before the encryption process begins, the program assigns an index value to each
 
 in the code below.
 
+```py
+23:         self.xvalues = {}
+24:         self.x_values = {}
+25:         self.x_v = []
+26:         for index, letter in enumerate(alphabets):
+27:             x =  ((((0.6*self.p)/27)*index)+(0.2*self.p))
+28:             self.x_v.append(x)
+29:             self.xvalues[x] = letter
+30:             self.x_values[letter] = x
+
+```
+
 At line 40, the “for” command loops through every letter in the alphabet and assigns each one a unique value by dividing the period of the tan graph by the total number of letters (i.e. 27 including “space”) and multiplying this value by their index value. In formulaic terms this
 
 would look like this: 
 
+![x_value for letters](Images/x-value_of_letters.png)
 
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-Where, _“index [letter]”_ is the index value that corresponds to that specific letter. After this, the x values produced by this formula are substituted into the tan graph formula to find the_ y _value they correspond with.
+Where, _“index(letter)”_ is the index value that corresponds to that specific letter. After this, the x values produced by this formula are substituted into the tan graph formula to find the_ y _value they correspond with.
 
 **<span style="text-decoration:underline;">Sample calculation</span>**:
 
 
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![first_sample_calculation](Images/first_sample_calculation.png)
 
 
 
@@ -154,60 +144,49 @@ The rest has been calculated and presented in table and graph format below.
 
 **<span style="text-decoration:underline;"> Data table 1</span>**
 
+![Data Table 1](Images/data_table_1.png)
+
 After this calculation, the algorithm will continue to do the same for the y values. The letters in the alphabet would be evenly distributed around the y-axis such that the y-values determined using the tan function can be converted into a letter, essentially forming the corresponding crypt letter or a given _input value(x)_. One may already observe that the approach suggested above would not allow for a proper encryption and decryption procedure, as the _y-_values output from the_ x-_values passing through the tan function have an large increase in distance from each other, thus, for this case, the crypt letters will have to be spaced apart on the y-axis from _(-206, 206)_ – rounded values. This is a total distance of _412_ and once calculated, each consecutive crypt letter would need to have a value difference of_ ~ 16_, which can be derived by following the calculation below. 
 
-Since we want to distribute_ 27_ values evenly across the _y-_axis, we can just take the central or median value away from the indexes of all the values. The central value between 0 and _27_ is exactly _13_, therefore
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-, where s = separation.
+Since we want to distribute_ 27_ values evenly across the _y-_axis, we can just take the central or median value away from the indexes of all the values. The central value between 0 and _27_ is exactly _13_, therefore ` yvalue = index[letter] - 13 * s `, where s = separation.
 
 In an instance where_ s = 1_, we would get the following values: 
 
 
     **<span style="text-decoration:underline;">Data table 2</span>**
+![Data Table 2](Images/data_table_2.png)
+
 
 This formula allows for the even spread of the letters across the _y _axis. The difference between these letters can be determined by the value of _“s”_. By rearranging the formula we can calculate the _s_ value required for the values in _data table 1_. The picture on the right is the same calculation but in the form of a code.
 
 Let’s take the character or letter [_space_] as it has the highest _Y-Value_
 
+![formula_for_predetermined_y](Images/formula_for_predetermined_y.png)
 
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
+```py
+31:         self.yvalues = {}
+32:         self.y_values= {}
+33:         self.y_v = []
+34:         for index, letter in enumerate(alphabets):
+35:             y = 26
+36:             x = []
+37:             m = ((index-(y/2))*self.hum)+self.d
+38:             self.y_v.append(m)
+39:             self.yvalues[m] = letter
+40:             self.y_values[letter] = m
+```
 
 An _s_ value of _16_ would give the following:
 
  **<span style="text-decoration:underline;">Data table 3</span>**
+ ![Data Table 3](Images/data_table_3.png)
+
 
 Unfortunately, this cant be used to encrypt and decrypt as there is a substantially increasing distance between the values. For example, all the values highlighted in data table 1 can only be encrypted to the letters highlighted in_ data table 3_. This was an annoying problem that was encountered, but a solution was found. This solution was to take away the ends of the tan graph which would allow values to have a more consistent difference. Different methods were attempted to do this but the most effective was the following:
 
 The period (_100 units_) defines the entire length of one period of the tan wave, and let’s assume that the stretched ends of the tan wave constitute about 20 units of its length. Using this assumption we can modify the _x-_values originally assigned to the letters to effectively cut out the, for a lack of a better description, the “_stretched ends_''. So, since _20_ units is _20%_ percent of the total length and there are _2_ of them, that’s a total of _40%_ of the graph which is composed of the “_stretched ends_”. We can start by just multiplying the period by _60%_ to take away _40%_ of the graph from the right side. This will look like this:
+
+ ![40-percent_of_graph](Images/40%_of_graph.png)
 
 Figure 3, graph with one cut end
 
@@ -215,141 +194,98 @@ As we can observe, _40%_ of its length was taken away from the right but since o
 
 This would look like this: 
 
+![translated_40-percent_graph](Images/translated_40%_graph.png)
 Figure 4, middle of a tan graph
 
 From here, we can calculate the exact _c_ value required to centre the graph by adding the highest and lowest _x_ values together and dividing by _2_. This would be calculated as:
 
-
-
-<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert16" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert17">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
+![Calculation_for_horizontal_translation](Images/Calculation_for_horizontal_translation.png)
 
 Due to our focus on the middle of the tan graph, we would now have a new set of values. 
 
 **<span style="text-decoration:underline;">Data Table 4</span>**
+ ![Data Table 4](Images/data_table_4.png)
 
-
-
-<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
 
 Since the values have a much smaller difference between each other now, we can use the formula stated earlier to assign letters on the_ y _axis. The maximum_ y _value with an _s_ value of _1_ is _13_ therefore the s value can be slightly increased to fit the data. In this case, an _s _value of 1.15 was found to be the best for encryption and decryption.
 
 **<span style="text-decoration:underline;">Data table 5</span>**
 
-
-
-<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
+ ![Data Table 5](Images/data_table_5.png)
 
 Now that the letters on both the _x_ and _y_ axis have been unique values we can start the encryption and decryption process. This process in the code is defined using a function called “encrypt (plaintext)” which takes a plain text as an input and returns the crypt text.
+
+```py
+75:     def encrypt(self, text):
+76:         crpyt=[]
+77:         for char in text.lower():
+78:             xval = self.x_values[char]
+79:             yval = self.tan(xval)
+80:             close = self.approximate(self.y_v,yval)
+81:             crpyt.append(self.yvalues[close])
+82:         return "".join(crpyt)
+```
 
 The “_for_” loop in line 68 goes through the plain text provided and splits it into its constituent letters.  Once it obtains the letters, which it refers to as “_char_”, it looks up their corresponding _x _value which is defined in_ data table 4_.
 
 It then puts the _x_ value that was obtained into a tan function. The _y _value that is obtained after this is saved as a variable named “_yval_”. The function then looks at _data table 5_ and uses a function I created called “_approximate” _to find the closest value to “_yval_”. 
 
+```py
+
+63:     def approximate(self,list, value):
+64:         """
+65:         Given a value and a list, finds the item within the list/array 
+66:         that has the least absolute difference with the value
+67:         """
+68:         n = []
+69:         for x in list:
+70:             n.append(abs(value - x))
+71:         idx = n.index(min(n))
+72:         return list[idx]
+
+```
+
 The approximate function takes in two arguments, a list of numbers and a value. It then loops through the list and takes away the value from each number. It attempts to find the number which has the least absolute difference with the input value and returns that number. 
 
 Sample Calculation:  The plain text, “_this is a maths assessment_”, starts with a “_t_” so let’s use that for this example. 
 
-
-
-<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert26" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert27">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert27" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert28">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
+ ![yval_sample_calculation](Images/yval_sample_calculation.png)
 
 
 Now that we have the _yval_, we can start the approximation process. Since it’s hard to show this using formula, it will be displayed in table format. 
 
  **<span style="text-decoration:underline;">Data table 5 </span>**
+ 
+ ![Data Table 5](Images/data_table_6.png)
 
 This is a representation of what the approximate function does. From what we can see, the letter _“s”_ has a _y _value with the least absolute difference to the _y _value of _“t”_ so, _“t”_ gets encrypted into _“s”_. This process will then be repeated for every letter to produce the crypt text. The full length of the plain text .
 
 **<span style="text-decoration:underline;">Data table 6</span>**
+ ![Data Table 6](Images/data_table_7.png)
 
 **<span style="text-decoration:underline;">Decryption process </span>**
 
 The decryption process is the exact reverse of the encryption process. We take the crypt text and find its corresponding _y _value from data table 5, then we utilise the inverse function to find an x value that would correspond with that value. The inverse function is:
 
-
-
-<p id="gdcalert28" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert29">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
+ ![inverse_of_tan_formula](Images/inverse_of_tan_formula.png)
 
 
 Since this function will not output an exact match to the predetermined_ x _values which letters on the_ x _axis already have, its output will go through the approximating function. In code, this would look like this:
+
+```py
+
+85:     def decrypter(self, text):
+86:         plain =[]
+87:         alphabets = string.ascii_lowercase
+88:         for char in text:
+89:             xval = self.y_values[char]
+90:             yval = self.arctan(xval)
+91:             close = self.approximate(self.x_v,yval)
+92:             plain.append(self.xvalues[close])
+93:         return "".join(plain)
+94: 
+
+```
 
 **<span style="text-decoration:underline;">Sample Calculation </span>**
 
@@ -357,90 +293,43 @@ Crypt text = “_sijr jr a masir jnsfqnal arrfrrmfns_”
 
 Let’s take the first letter “_s_” 
 
-
-
-<p id="gdcalert29" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert30">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert30" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert31">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert31" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert32">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert32" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert33">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-
-
-
-<p id="gdcalert33" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: equation: use MathJax/LaTeX if your publishing platform supports it. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert34">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
+ ![sample_decryption](Images/sample_decryption.png)
 
 
 Since the x value of “_64.44444444_” is equal to the_ x_ value of_ _“_t_”, “_s_” will be decrypted to “_t_”. 
 
+ ![decryption_data](Images/decryption_data.png)
+
+
 **Other examples: **
 
 
-                                    Plain text “This was an interesting experiment”
+Plain text “This was an interesting experiment”
 
-
-                                    
-
-<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
+![example_decryption_1](Images/example_decryption_1.png)
 
 
 Plain text “cryptography was fun to learn”
 
-
-
-<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
+![example_decryption_2](Images/example_decryption_2.png)
 
 
 Plain text “Some errors can be observed”
 
-
-
-<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
+![example_decryption_3](Images/example_decryption_3.png)
 
 
 Plain text “These errors exist around the middle of the tan graph”
 
+![example_decryption_4](Images/example_decryption_4.png)
 
-
-<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
 
 
 The errors observed above, more specifically with the letter “o”, is the result of the “squashed” middle of the tan graph. The letters “k, l, m, n, o” have a difference that is under 1.15 thus two of the letters get encrypted to the same letter. In this case, the letter o and n had too close of a value and the approximation function encrypted “o” to “n” when encrypting back, since the values were close, it returned “n” rather than “o”. This can be demonstrated by looking at the following example encryption of the plain text “klmno”
 
+![example_decryption_5](Images/example_decryption_5.png)
 
 
-<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
 
 **<span style="text-decoration:underline;">Conclusion</span>**
 
@@ -448,7 +337,9 @@ Overall it can be concluded that, whilst interesting, it's ultimately impossible
 
 For a graph based encryption process such as the one I am trying to make, the function used passing the horizontal line test is critical. Using functions such as a sin function would ultimately not work as there are multiple x values which correspond to one y value. Even when taking one of its periods like we did for the tan graph, most y values correspond to at least two different values with an exception of y = 0 corresponding to three and  y = 1 which only corresponds to one x value as they represent the peak of the sin wave. Another way to interpret this is to say that the inverse of the function used must pass the horizontal line test. 
 
-The figure on the left shows how the sine graph fails the vertical line test. One horizontal line intersects the graph at two points which are indicated by the red dots. This can be understood to mean that this function has multiple x values for corresponding to a single y value. Therefore, using this in the encryption process outlined above would be impossible. This would also eliminate the cosine function since it shares the same limitations as the sine function. 
+![horizontal_line_test](Images/horizontal_line_test.png)
+
+The figure above shows how the sine graph fails the vertical line test. One horizontal line intersects the graph at two points which are indicated by the red dots. This can be understood to mean that this function has multiple x values for corresponding to a single y value. Therefore, using this in the encryption process outlined above would be impossible. This would also eliminate the cosine function since it shares the same limitations as the sine function. 
 
 However, the horizontal test isn't the only requirement for graphs to be used for this encryption system. There is the problem that arises as a graph curve. As seen above in this investigation from the “stretching ends'' and the “squashed middle”. These caused some problems when attempting to encrypt due to either a too big or too little of a difference in the value assigned to the different letters. This would, therefore, eliminate all exponential or  logarithmic functions which means that all the functions I have covered as part of my Maths Analysis and Approaches course cant be used for this encryption process. Other fully functioning graph based encryption algorithms exist (i.e. Elliptic curve encryption[^4]) but the math behind it is entirely outside the Maths AA syllabus and too complicated to effectively explain in such a short paper. Therefore, this investigation can be concluded with the understanding that there is an encryption algorithm that could be made using simple trigonometric graphs, though not fully functional, it works nonetheless. 
 
