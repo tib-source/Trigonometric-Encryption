@@ -1,64 +1,6 @@
 # Trigonometric-Encryption
 An Encryption that uses the Trigonometric Functions to encrypt text 
 
-
-WARNING:
-You have some equations: look for ">>>>>  gd2md-html alert:  equation..." in output.
-
-
-WARNING:
-Inline drawings not supported: look for ">>>>>  gd2md-html alert:  inline drawings..." in output.
-
-* This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
-
------>
-
-
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 2; ALERTS: 38.</p>
-<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
-
-<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
-<a href="#gdcalert2">alert2</a>
-<a href="#gdcalert3">alert3</a>
-<a href="#gdcalert4">alert4</a>
-<a href="#gdcalert5">alert5</a>
-<a href="#gdcalert6">alert6</a>
-<a href="#gdcalert7">alert7</a>
-<a href="#gdcalert8">alert8</a>
-<a href="#gdcalert9">alert9</a>
-<a href="#gdcalert10">alert10</a>
-<a href="#gdcalert11">alert11</a>
-<a href="#gdcalert12">alert12</a>
-<a href="#gdcalert13">alert13</a>
-<a href="#gdcalert14">alert14</a>
-<a href="#gdcalert15">alert15</a>
-<a href="#gdcalert16">alert16</a>
-<a href="#gdcalert17">alert17</a>
-<a href="#gdcalert18">alert18</a>
-<a href="#gdcalert19">alert19</a>
-<a href="#gdcalert20">alert20</a>
-<a href="#gdcalert21">alert21</a>
-<a href="#gdcalert22">alert22</a>
-<a href="#gdcalert23">alert23</a>
-<a href="#gdcalert24">alert24</a>
-<a href="#gdcalert25">alert25</a>
-<a href="#gdcalert26">alert26</a>
-<a href="#gdcalert27">alert27</a>
-<a href="#gdcalert28">alert28</a>
-<a href="#gdcalert29">alert29</a>
-<a href="#gdcalert30">alert30</a>
-<a href="#gdcalert31">alert31</a>
-<a href="#gdcalert32">alert32</a>
-<a href="#gdcalert33">alert33</a>
-<a href="#gdcalert34">alert34</a>
-<a href="#gdcalert35">alert35</a>
-<a href="#gdcalert36">alert36</a>
-<a href="#gdcalert37">alert37</a>
-<a href="#gdcalert38">alert38</a>
-
-<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
-##
-
 ## <span style="text-decoration:underline;">Introduction</span>
 
 With the growing reliance on computers and the Internet, data privacy is undoubtedly one of the most critical concerns of modern society. It may be argued that the majority of the global government processes have been computerized, and with this comes the growing importance of data encryption. Encryption is the mechanism by which information is scrambled to allow only approved parties to view it[^1]. Recently, the United States was the target of a suspected Russian cyber-attack, in which the State Department, the Treasury Department, Homeland Security, the National Security Administration and several others have been breached. It is suspected that the alleged hackers compromised and seized a significant amount of sensitive information, the most critical of which was nuclear technology[^2]. Taking this into account, it is plausible to conclude that data security and encryption are crucial for our current society. This increasing significance of cryptography, the art of encryption, served as inspiration for this investigation. 
@@ -75,14 +17,18 @@ In the following paper I will propose a simple trigonometry-based encryption sys
 
 The process of encryption that I am exploring in this paper is quite simple. Initially, several values which will define the different parameters for the tangent(tan) function are supplied by a user. Once given these values, the tangent function will be graphed in a way such that only one period of the graph can be seen. The letters of the alphabet will then be distributed on the _x _axis across the domain of one period of the function. The same will be done on the _y_-axis. Therefore, once an _x _value that has a letter linked to it, is processed through the tangent function, there will be a _y _value returned with another letter linked to it. The letters on the x axis or the will represent the pain text whereas the letters on the _y _axis or the letters corresponding to the output of the tangent function will be the crypt letter.  
 
-
 ## <span style="text-decoration:underline;">Process</span>
-![Process](Images/Process.png)
 
+
+<p align="center">
+    <img src="Images/Process.png"> 
+</p>
 
 As the program initialises, the user is prompted to provide several values for the transformation formula of the tan graph. This follows the formula:
 
-![transformation_formula](Images/transformation_formula.png)
+<p align="center">
+    <img src="Images/transformation_formula.png"> 
+</p>
 
 
  Where:
@@ -107,9 +53,7 @@ Determining the best possible parameters is important for the encryption to work
 
 ## Encryption
 
-Before the encryption process begins, the program assigns an index value to each letter in the alphabet, eg “space” = 0, a = 1, b = 2, c = 3, …, z = 27. When this is finished, the length of the tan wave is taken and all the letters are uniformly distributed around it. This can be seen 
-
-in the code below.
+Before the encryption process begins, the program assigns an index value to each letter in the alphabet, eg “space” = 0, a = 1, b = 2, c = 3, …, z = 27. When this is finished, the length of the tan wave is taken and all the letters are uniformly distributed around it. This can be seen in the code below.
 
 ```py
 23:         self.xvalues = {}
@@ -127,16 +71,18 @@ At line 40, the “for” command loops through every letter in the alphabet and
 
 would look like this: 
 
-![x_value for letters](Images/x-value_of_letters.png)
+<p align="center">
+    <img src="Images/x-value_of_letters.png"> 
+</p>
 
 
 Where, _“index(letter)”_ is the index value that corresponds to that specific letter. After this, the x values produced by this formula are substituted into the tan graph formula to find the_ y _value they correspond with.
 
-**<span style="text-decoration:underline;">Sample calculation</span>**:
+**<span style="text-decoration:underline;"> Sample calculation </span>**
 
-
-
-![first_sample_calculation](Images/first_sample_calculation.png)
+<p align="center">
+    <img src="Images/first_sample_calculation.png"> 
+</p>
 
 
 
@@ -144,7 +90,11 @@ The rest has been calculated and presented in table and graph format below.
 
 **<span style="text-decoration:underline;"> Data table 1</span>**
 
-![Data Table 1](Images/data_table_1.png)
+
+<p align="center">
+    <img src="Images/data_table_1.png"> 
+</p>
+
 
 After this calculation, the algorithm will continue to do the same for the y values. The letters in the alphabet would be evenly distributed around the y-axis such that the y-values determined using the tan function can be converted into a letter, essentially forming the corresponding crypt letter or a given _input value(x)_. One may already observe that the approach suggested above would not allow for a proper encryption and decryption procedure, as the _y-_values output from the_ x-_values passing through the tan function have an large increase in distance from each other, thus, for this case, the crypt letters will have to be spaced apart on the y-axis from _(-206, 206)_ – rounded values. This is a total distance of _412_ and once calculated, each consecutive crypt letter would need to have a value difference of_ ~ 16_, which can be derived by following the calculation below. 
 
@@ -154,14 +104,20 @@ In an instance where_ s = 1_, we would get the following values:
 
 
     **<span style="text-decoration:underline;">Data table 2</span>**
-![Data Table 2](Images/data_table_2.png)
+
+<p align="center">
+    <img src="Images/data_table_2.png"> 
+</p>
 
 
 This formula allows for the even spread of the letters across the _y _axis. The difference between these letters can be determined by the value of _“s”_. By rearranging the formula we can calculate the _s_ value required for the values in _data table 1_. The picture on the right is the same calculation but in the form of a code.
 
 Let’s take the character or letter [_space_] as it has the highest _Y-Value_
 
-![formula_for_predetermined_y](Images/formula_for_predetermined_y.png)
+
+<p align="center">
+    <img src="Images/formula_for_predetermined_y.png"> 
+</p>
 
 ```py
 31:         self.yvalues = {}
@@ -179,14 +135,20 @@ Let’s take the character or letter [_space_] as it has the highest _Y-Value_
 An _s_ value of _16_ would give the following:
 
  **<span style="text-decoration:underline;">Data table 3</span>**
- ![Data Table 3](Images/data_table_3.png)
+
+<p align="center">
+    <img src="Images/data_table_3.png"> 
+</p>
 
 
 Unfortunately, this cant be used to encrypt and decrypt as there is a substantially increasing distance between the values. For example, all the values highlighted in data table 1 can only be encrypted to the letters highlighted in_ data table 3_. This was an annoying problem that was encountered, but a solution was found. This solution was to take away the ends of the tan graph which would allow values to have a more consistent difference. Different methods were attempted to do this but the most effective was the following:
 
 The period (_100 units_) defines the entire length of one period of the tan wave, and let’s assume that the stretched ends of the tan wave constitute about 20 units of its length. Using this assumption we can modify the _x-_values originally assigned to the letters to effectively cut out the, for a lack of a better description, the “_stretched ends_''. So, since _20_ units is _20%_ percent of the total length and there are _2_ of them, that’s a total of _40%_ of the graph which is composed of the “_stretched ends_”. We can start by just multiplying the period by _60%_ to take away _40%_ of the graph from the right side. This will look like this:
 
- ![40-percent_of_graph](Images/40%_of_graph.png)
+
+<p align="center">
+    <img src="Images/40%_of_graph.png"> 
+</p>
 
 Figure 3, graph with one cut end
 
@@ -194,24 +156,36 @@ As we can observe, _40%_ of its length was taken away from the right but since o
 
 This would look like this: 
 
-![translated_40-percent_graph](Images/translated_40%_graph.png)
+<p align="center">
+    <img src="Images/translated_40%_graph.png"> 
+</p>
+
 Figure 4, middle of a tan graph
 
 From here, we can calculate the exact _c_ value required to centre the graph by adding the highest and lowest _x_ values together and dividing by _2_. This would be calculated as:
 
-![Calculation_for_horizontal_translation](Images/Calculation_for_horizontal_translation.png)
+<p align="center">
+    <img src="Images/Calculation_for_horizontal_translation.png"> 
+</p>
+
 
 Due to our focus on the middle of the tan graph, we would now have a new set of values. 
 
 **<span style="text-decoration:underline;">Data Table 4</span>**
- ![Data Table 4](Images/data_table_4.png)
+
+<p align="center">
+    <img src="Images/data_table_4.png"> 
+</p>
+
 
 
 Since the values have a much smaller difference between each other now, we can use the formula stated earlier to assign letters on the_ y _axis. The maximum_ y _value with an _s_ value of _1_ is _13_ therefore the s value can be slightly increased to fit the data. In this case, an _s _value of 1.15 was found to be the best for encryption and decryption.
 
 **<span style="text-decoration:underline;">Data table 5</span>**
 
- ![Data Table 5](Images/data_table_5.png)
+<p align="center">
+    <img src="Images/data_table_5.png"> 
+</p>
 
 Now that the letters on both the _x_ and _y_ axis have been unique values we can start the encryption and decryption process. This process in the code is defined using a function called “encrypt (plaintext)” which takes a plain text as an input and returns the crypt text.
 
@@ -249,25 +223,35 @@ The approximate function takes in two arguments, a list of numbers and a value. 
 
 Sample Calculation:  The plain text, “_this is a maths assessment_”, starts with a “_t_” so let’s use that for this example. 
 
- ![yval_sample_calculation](Images/yval_sample_calculation.png)
+<p align="center">
+    <img src="Images/yval_sample_calculation.png"> 
+</p>
 
 
 Now that we have the _yval_, we can start the approximation process. Since it’s hard to show this using formula, it will be displayed in table format. 
 
  **<span style="text-decoration:underline;">Data table 5 </span>**
  
- ![Data Table 5](Images/data_table_6.png)
+<p align="center">
+    <img src="Images/data_table_6.png"> 
+</p>
 
 This is a representation of what the approximate function does. From what we can see, the letter _“s”_ has a _y _value with the least absolute difference to the _y _value of _“t”_ so, _“t”_ gets encrypted into _“s”_. This process will then be repeated for every letter to produce the crypt text. The full length of the plain text .
 
 **<span style="text-decoration:underline;">Data table 6</span>**
- ![Data Table 6](Images/data_table_7.png)
+
+<p align="center">
+    <img src="Images/data_table_7.png"> 
+</p>
 
 **<span style="text-decoration:underline;">Decryption process </span>**
 
 The decryption process is the exact reverse of the encryption process. We take the crypt text and find its corresponding _y _value from data table 5, then we utilise the inverse function to find an x value that would correspond with that value. The inverse function is:
 
- ![inverse_of_tan_formula](Images/inverse_of_tan_formula.png)
+
+<p align="center">
+    <img src="Images/inverse_of_tan_formula.png"> 
+</p>
 
 
 Since this function will not output an exact match to the predetermined_ x _values which letters on the_ x _axis already have, its output will go through the approximating function. In code, this would look like this:
@@ -293,12 +277,18 @@ Crypt text = “_sijr jr a masir jnsfqnal arrfrrmfns_”
 
 Let’s take the first letter “_s_” 
 
- ![sample_decryption](Images/sample_decryption.png)
+
+<p align="center">
+    <img src="Images/sample_decryption.png"> 
+</p>
 
 
 Since the x value of “_64.44444444_” is equal to the_ x_ value of_ _“_t_”, “_s_” will be decrypted to “_t_”. 
 
- ![decryption_data](Images/decryption_data.png)
+
+<p align="center">
+    <img src="Images/decryption_data.png"> 
+</p>
 
 
 **Other examples: **
@@ -306,28 +296,43 @@ Since the x value of “_64.44444444_” is equal to the_ x_ value of_ _“_t_�
 
 Plain text “This was an interesting experiment”
 
-![example_decryption_1](Images/example_decryption_1.png)
+
+<p align="center">
+    <img src="Images/example_decryption_1.png"> 
+</p>
 
 
 Plain text “cryptography was fun to learn”
 
-![example_decryption_2](Images/example_decryption_2.png)
+
+<p align="center">
+    <img src="Images/example_decryption_2.png"> 
+</p>
 
 
 Plain text “Some errors can be observed”
 
-![example_decryption_3](Images/example_decryption_3.png)
+
+<p align="center">
+    <img src="Images/example_decryption_3.png"> 
+</p>
 
 
 Plain text “These errors exist around the middle of the tan graph”
 
-![example_decryption_4](Images/example_decryption_4.png)
+
+<p align="center">
+    <img src="Images/example_decryption_4.png"> 
+</p>
 
 
 
 The errors observed above, more specifically with the letter “o”, is the result of the “squashed” middle of the tan graph. The letters “k, l, m, n, o” have a difference that is under 1.15 thus two of the letters get encrypted to the same letter. In this case, the letter o and n had too close of a value and the approximation function encrypted “o” to “n” when encrypting back, since the values were close, it returned “n” rather than “o”. This can be demonstrated by looking at the following example encryption of the plain text “klmno”
 
-![example_decryption_5](Images/example_decryption_5.png)
+
+<p align="center">
+    <img src="Images/example_decryption_5.png"> 
+</p>
 
 
 
@@ -337,7 +342,9 @@ Overall it can be concluded that, whilst interesting, it's ultimately impossible
 
 For a graph based encryption process such as the one I am trying to make, the function used passing the horizontal line test is critical. Using functions such as a sin function would ultimately not work as there are multiple x values which correspond to one y value. Even when taking one of its periods like we did for the tan graph, most y values correspond to at least two different values with an exception of y = 0 corresponding to three and  y = 1 which only corresponds to one x value as they represent the peak of the sin wave. Another way to interpret this is to say that the inverse of the function used must pass the horizontal line test. 
 
-![horizontal_line_test](Images/horizontal_line_test.png)
+<p align="center">
+    <img src="Images/horizontal_line_test.png"> 
+</p>
 
 The figure above shows how the sine graph fails the vertical line test. One horizontal line intersects the graph at two points which are indicated by the red dots. This can be understood to mean that this function has multiple x values for corresponding to a single y value. Therefore, using this in the encryption process outlined above would be impossible. This would also eliminate the cosine function since it shares the same limitations as the sine function. 
 
